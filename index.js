@@ -1,12 +1,18 @@
 const express = require("express");
 const database = require("./config/database");
+require("dotenv").config();
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
 database.connect();     // kết nối db
 
-app.get("/tasks",(req,res)=>{
-    res.send("Danh sách công việc");
+const Task = require("./model/tasks.model");
+
+app.get("/tasks",async (req,res)=>{
+    const tasks = await Task.find({
+        deleted:false,
+    })
+    res.json(tasks);
 })
 
 app.listen(port,()=>{
