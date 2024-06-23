@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const database = require("./config/database");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
 require("dotenv").config();
 
@@ -13,6 +14,8 @@ const port = process.env.PORT;
 app.use(cors());
 
 database.connect(); // kết nối db
+
+app.use(cookieParser());
 
 // parse application/json
 app.use(bodyParser.json());
