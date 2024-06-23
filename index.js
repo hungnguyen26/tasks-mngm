@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const database = require("./config/database");
 const bodyParser = require("body-parser");
 
@@ -8,6 +9,8 @@ const routerApiVer1 = require("./api/v1/router/index.router");
 
 const app = express();
 const port = process.env.PORT;
+
+app.use(cors());
 
 database.connect(); // kết nối db
 
