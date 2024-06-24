@@ -10,4 +10,6 @@ router.post("/login", controller.login);
 
 router.post("/password/forgot", controller.forgotPassword);
 
+router.post("/password/opt", controller.otpPassword);
+
 module.exports = router;
